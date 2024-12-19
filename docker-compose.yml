@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  liferay:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_DRIVER_UPPERCASEC_LASS_UPPERCASEN_AME=org.postgresql.Driver
+      - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_URL=jdbc:postgresql://postgres:5432/liferay
+      - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_USERNAME=liferay
+      - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_PASSWORD=liferay
+    depends_on:
+      - postgres
+    volumes:
+      - liferay_data:/opt/liferay/data
+      - liferay-deploy:/opt/liferay/deploy
+      - ./configs/portal-ext.properties:/opt/liferay/portal-ext.properties:ro
+
+  postgres:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=liferay
+      - POSTGRES_PASSWORD=liferay
+      - POSTGRES_DB=liferay
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  liferay_data:
+  liferay-deploy:
+  postgres_data:
