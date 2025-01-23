@@ -1,5 +1,5 @@
 # Liferay 7.4 Q4
-FROM liferay/dxp:2024.q4.0
+FROM liferay/dxp:2024.q4.1
 
 # Instalar herramientas adicionales (opcional)
 USER root

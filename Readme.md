@@ -18,8 +18,8 @@ Antes de ejecutar la configuración de Docker Compose, asegúrate de tener lo si
 Clona el repositorio a tu máquina local y navega a la carpeta del proyecto:
 
 ```bash
-git clone <url-del-repositorio>
-cd <nombre-del-repositorio>
+git clone https://github.com/jorgedual/liferay-7-4-docker.git
+cd liferay-7-4-docker
 ```
 
 ### 2. Configuración del entorno
@@ -47,7 +47,7 @@ docker-compose up --build
 Para ejecutar los contenedores en modo detached (background):
 
 ```bash
-docker-compose up -d --build
+docker-compose up -d
 ```
 
 ### 4. Acceder a Liferay
@@ -56,8 +56,15 @@ Una vez que los contenedores estén en ejecución:
 
 1. Abre tu navegador web
 2. Accede a `http://localhost:8080`
-3. La primera vez que accedas, Liferay realizará la configuración inicial
-4. El proceso de inicio puede tomar varios minutos
+3. La primera vez que accedas, Liferay realizará la configuración inicial.
+4. En el primer inicio de sesión ingresa con las credenciales:
+
+```
+user: test@liferay.com
+password: test
+```
+
+5. Una vez que hayas iniciado sesión, te solicitará realizar cambio de contraseña y agregar una respuesta a la pregunta de recuperación"
 
 ### 5. Gestión de los contenedores
 
@@ -112,10 +119,13 @@ Si encuentras errores de memoria, asegúrate de que Docker tiene asignados al me
 Si Liferay no puede conectarse a PostgreSQL:
 
 1. Verifica que el servicio de PostgreSQL está en ejecución:
+
 ```bash
 docker-compose ps
 ```
+
 2. Comprueba los logs de PostgreSQL:
+
 ```bash
 docker-compose logs postgres
 ```
@@ -131,7 +141,3 @@ Para mejorar el rendimiento:
 ## Contribuir
 
 Las contribuciones son bienvenidas. Por favor, abre un issue o pull request para sugerir cambios o mejoras.
-
-## Licencia
-
-Este proyecto está licenciado bajo [incluir tipo de licencia].

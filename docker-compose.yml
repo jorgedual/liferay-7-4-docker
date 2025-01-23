@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   liferay:
@@ -20,7 +20,7 @@ services:
       - ./configs/portal-ext.properties:/opt/liferay/portal-ext.properties:ro
 
   postgres:
-    image: postgres:15
+    image: postgres:16.6
     environment:
       - POSTGRES_USER=liferay
       - POSTGRES_PASSWORD=liferay
